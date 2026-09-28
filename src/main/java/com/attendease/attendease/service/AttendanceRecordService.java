@@ -115,7 +115,7 @@ public class AttendanceRecordService {
         long totalClasses = records.size();
 
         long attendedClasses = records.stream()
-                .filter(AttendanceRecord::isPresent)
+            .filter(record -> record != null && record.isPresent())
                 .count();
 
         return (attendedClasses * 100.0) / totalClasses;
@@ -146,7 +146,7 @@ public class AttendanceRecordService {
         long totalClasses = records.size();
 
         long classesAttended = records.stream()
-                .filter(AttendanceRecord::isPresent)
+            .filter(record -> record != null && record.isPresent())
                 .count();
 
         long classesAbsent = totalClasses - classesAttended;
